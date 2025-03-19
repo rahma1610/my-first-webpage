@@ -1,5 +1,3 @@
-إليك كود بسيط لسبحة رقمية، بحيث يظهر كل ذكر في إطار (Frame) بلون مختلف، مع زر لزيادة العد:
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -10,7 +8,7 @@
         body {
             font-family: "Arial", sans-serif;
             text-align: center;
-            background-color: #f0f0f0;
+            background-color: #ffe6f2; 
             padding: 20px;
         }
         #frame {
@@ -21,9 +19,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             border-radius: 10px;
+            background-color: white;
         }
         #count {
             font-size: 24px;
@@ -49,7 +48,7 @@
 
     <h1>السبحة الرقمية</h1>
 
-    <div id="frame">اضغط للبدء</div>
+    <div id="frame"><span id="text">اضغط للبدء</span></div>
     <p id="count">العدد: 0</p>
 
     <button onclick="tasbeeh()">اضغط للتسبيح</button>
@@ -67,10 +66,10 @@
         function tasbeeh() {
             count++;
             let zikr = adhkar[index];
-            document.getElementById("frame").textContent = zikr.text;
-            document.getElementById("frame").style.backgroundColor = zikr.color;
+            document.getElementById("text").textContent = zikr.text;
+            document.getElementById("text").style.color = zikr.color;
             document.getElementById("count").textContent = "العدد: " + count;
-            index = (index + 1) % adhkar.length; // التنقل بين الأذكار
+            index = (index + 1) % adhkar.length; 
         }
     </script>
 
