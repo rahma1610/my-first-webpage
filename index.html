@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -9,7 +8,7 @@
         body {
             font-family: "Arial", sans-serif;
             text-align: center;
-            background-color: #ffe6f2;
+            background-color: #ffe6f2; 
             padding: 20px;
         }
         #frame {
@@ -34,21 +33,21 @@
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 18px;
-            background-color: #ADD8E6;
-            color: black;
+            background-color: #808080; 
+            color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
             margin: 5px;
         }
         button:hover {
-            background-color: #87CEEB; 
+            background-color: #A9A9A9; 
         }
     </style>
 </head>
 <body>
 
-    <h1>سبحتي</h1>
+    <h1>يَا أَيُّهَا الَّذِينَ آمَنُوا اذْكُرُوا اللَّهَ ذِكْرًا كَثِيرًا 📿</h1>
 
     <div id="frame"><span id="text">اضغط للبدء</span></div>
     <p id="count">العدد: 0</p>
@@ -57,8 +56,9 @@
     <button onclick="resetCounter()">إعادة التصفير</button>
 
     <script>
-        let count = 0;
-        let index = 0;
+        let count = localStorage.getItem("tasbeehCount") ? parseInt(localStorage.getItem("tasbeehCount")) : 0;
+        let index = localStorage.getItem("tasbeehIndex") ? parseInt(localStorage.getItem("tasbeehIndex")) : 0;
+
         let adhkar = [
             { text: "سبحان الله", color: "red" },
             { text: "الحمد لله", color: "blue" },
@@ -66,13 +66,26 @@
             { text: "أستغفر الله العظيم", color: "purple" }
         ];
 
+        
+        document.getElementById("count").textContent = "العدد: " + count;
+        if (count > 0) {
+            let zikr = adhkar[index];
+            document.getElementById("text").textContent = zikr.text;
+            document.getElementById("text").style.color = zikr.color;
+        }
+
         function tasbeeh() {
             count++;
+            index = (index + 1) % adhkar.length;
+
             let zikr = adhkar[index];
             document.getElementById("text").textContent = zikr.text;
             document.getElementById("text").style.color = zikr.color;
             document.getElementById("count").textContent = "العدد: " + count;
-            index = (index + 1) % adhkar.length; 
+
+          
+            localStorage.setItem("tasbeehCount", count);
+            localStorage.setItem("tasbeehIndex", index);
         }
 
         function resetCounter() {
@@ -81,8 +94,15 @@
             document.getElementById("text").textContent = "اضغط للبدء";
             document.getElementById("text").style.color = "black";
             document.getElementById("count").textContent = "العدد: 0";
+
+         
+            localStorage.removeItem("tasbeehCount");
+            localStorage.removeItem("tasbeehIndex");
         }
     </script>
 
 </body>
-</html>           
+</html>
+
+       
+ 
