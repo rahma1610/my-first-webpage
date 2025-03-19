@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -8,7 +9,7 @@
         body {
             font-family: "Arial", sans-serif;
             text-align: center;
-            background-color: #ffe6f2; 
+            background-color: #ffe6f2;
             padding: 20px;
         }
         #frame {
@@ -33,25 +34,27 @@
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 18px;
-            background-color: black;
-            color: white;
+            background-color: #ADD8E6;
+            color: black;
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            margin: 5px;
         }
         button:hover {
-            background-color: gray;
+            background-color: #87CEEB; 
         }
     </style>
 </head>
 <body>
 
-    <h1>السبحة الرقمية</h1>
+    <h1>سبحتي</h1>
 
     <div id="frame"><span id="text">اضغط للبدء</span></div>
     <p id="count">العدد: 0</p>
 
     <button onclick="tasbeeh()">اضغط للتسبيح</button>
+    <button onclick="resetCounter()">إعادة التصفير</button>
 
     <script>
         let count = 0;
@@ -71,7 +74,15 @@
             document.getElementById("count").textContent = "العدد: " + count;
             index = (index + 1) % adhkar.length; 
         }
+
+        function resetCounter() {
+            count = 0;
+            index = 0;
+            document.getElementById("text").textContent = "اضغط للبدء";
+            document.getElementById("text").style.color = "black";
+            document.getElementById("count").textContent = "العدد: 0";
+        }
     </script>
 
 </body>
-</html>
+</html>           
