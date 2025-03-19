@@ -1,0 +1,78 @@
+إليك كود بسيط لسبحة رقمية، بحيث يظهر كل ذكر في إطار (Frame) بلون مختلف، مع زر لزيادة العد:
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السبحة الرقمية</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #frame {
+            width: 300px;
+            height: 100px;
+            border: 2px solid black;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        #count {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>السبحة الرقمية</h1>
+
+    <div id="frame">اضغط للبدء</div>
+    <p id="count">العدد: 0</p>
+
+    <button onclick="tasbeeh()">اضغط للتسبيح</button>
+
+    <script>
+        let count = 0;
+        let index = 0;
+        let adhkar = [
+            { text: "سبحان الله", color: "red" },
+            { text: "الحمد لله", color: "blue" },
+            { text: "الله أكبر", color: "green" },
+            { text: "أستغفر الله العظيم", color: "purple" }
+        ];
+
+        function tasbeeh() {
+            count++;
+            let zikr = adhkar[index];
+            document.getElementById("frame").textContent = zikr.text;
+            document.getElementById("frame").style.backgroundColor = zikr.color;
+            document.getElementById("count").textContent = "العدد: " + count;
+            index = (index + 1) % adhkar.length; // التنقل بين الأذكار
+        }
+    </script>
+
+</body>
+</html>
